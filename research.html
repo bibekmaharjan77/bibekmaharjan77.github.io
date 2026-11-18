@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Bibek Maharjan">
+    <meta name="description" content="Bibek Maharjan’s research on learning-augmented distributed directories and online routing problems.">
+    <title>Research | Bibek Maharjan</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/tooplate-style.css">
+  </head>
+  <body>
+      <!-- MENU -->
+      <div id="site-navbar"></div>
+
+    <main class="container pt-3">
+      <div class="row">
+        <div class="col-12">
+          <h1>Research</h1>
+          <p>I’m a PhD student in Computer Science at Kent State University, where I work with
+            Dr. Gokarna Sharma in the <a href="https://gokarnasharma.github.io/scale/">SCALE Lab</a>.
+            I study how distributed systems can use imperfect predictions about future requests and find shared objects in a network. I’m now also studying
+            how to route multiple repairpersons when new requests arrive over time.</p>
+
+          <p><strong>Research Interests:</strong> Distributed algorithms; learning-augmented algorithms; online algorithms; routing and repairperson problems; distributed directories; graph analytics; data engineering systems.</p>
+
+
+          <!-- <section class="mt-4 pt-3 border-top" aria-labelledby="research-interests">
+            <h2 id="research-interests" class="h3">Research Interests</h2>
+            <ul>
+              <li><strong>Distributed and learning-augmented algorithms.</strong> I study how predictions about future requesters can help a distributed directory locate shared objects with less communication. I’m interested in protocols that still give useful performance guarantees when predictions are inaccurate.</li>
+              <li><strong>Online algorithms and routing.</strong> In the traveling repairperson problem, a request can arrive just after a repairperson has passed its location. I’m interested in how several repairpersons can divide the work on a line to keep waiting times short without knowing where the next request will appear.</li>
+              <li><strong>Graph analytics and data engineering systems.</strong> I’m interested in how the structure of a graph can make distributed computation more efficient. In subgraph matching, for example, a vertex’s neighborhood can help rule out a candidate before a system spends time checking the full match.</li>
+            </ul>
+          </section> -->
+
+          <hr>
+          <h3>Research Projects</h3>
+          <section class="mt-3" aria-labelledby="directories">
+            <h3 id="directories" class="h3">Learning-augmented distributed directories</h3>
+            <p>When a node writes to a shared object, ownership moves to that node. A later reader
+              needs to find the current owner to get a copy. We asked whether
+              predicting which nodes will request the object can reduce the distance that directory
+              messages travel, even when some predictions are wrong.</p>
+            <p>Our <a href="https://doi.org/10.1109/NCA67271.2025.00015">IEEE NCA 2025 paper</a>
+              studied the case where all predicted requesters are known at the outset, but their
+              request times are unknown. In our
+              <a href="publications.html#pub-2026">SSS 2026 paper</a>,
+              <cite>Online Learning-Augmented Distributed Directories</cite>, we studied the case
+              where predictions themselves arrive over time.</p>
+            <p>We studied two protocols: The first connects the initially predicted nodes and the
+              owner with a Steiner tree, attaches the remaining nodes by shortest paths, and keeps
+              that tree fixed. The second organizes nodes into clusters. An initially predicted
+              node can become a leader when a request path visits its cluster. This was an incremental but a novel approach we used in our work.</p>
+            <p>We evaluated both protocols on random, small-world, Internet-like, and grid networks.
+              We measured <em>stretch</em> by comparing the total distance along the overlay with the
+              total shortest-path distance in the original network for the same sequence of holders,
+              starting with the owner. This let us examine how much extra distance the protocols
+              incurred as prediction error varied.</p>
+          </section>
+
+          <section class="mt-4 pt-3 border-top" aria-labelledby="routing">
+            <h3 id="routing" class="h3">Online routing with multiple repairpersons</h3>
+            <p>We’re studying the online traveling repairperson problem on a line. A request
+              arrives at a location, and the algorithm learns about it only when it is released.
+              With several repairpersons, the algorithm must decide who serves each request
+              and in what order. We’re analyzing how to make those decisions using only the
+              requests known so far.</p>
+          </section>
+
+          <section class="mt-4 pt-3 border-top" aria-labelledby="graph-matching">
+            <h3 id="graph-matching" class="h3">Big Data Analytics Course project in distributed subgraph matching</h3>
+            <p>For our Big Data Analytics course, we built a Hadoop MapReduce pipeline to find
+              occurrences of a query graph inside a larger graph. Before verifying a match, the
+              pipeline compares signatures that summarize the neighborhoods around candidate
+              vertices. This rules out structurally incompatible candidates before the more
+              expensive verification step.</p>
+            <p><a href="https://github.com/sushantbhattaraii/neighbor-signature-subgraph-matching">Subgraph matching code</a></p>
+          </section>
+
+          <section class="mt-4 pt-3 border-top" aria-labelledby="gestures">
+            <h3 id="gestures" class="h3">Undergraduate project on Melanoma Detection System</h3>
+            <p>At Tribhuvan University, I trained a convolutional neural network to recognize images of Melanoma, a skin disease.
+              I used OpenCV to process the images and
+              TensorFlow to train the classifier.</p>
+          </section>
+        </div>
+      </div>
+    </main>
+    <!-- FOOTER -->
+     <div id="site-footer"></div>
+    <script src="js/site-layout.js"></script>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Headroom.js"></script>
+    <script src="js/jQuery.headroom.js"></script>
+    <script>$(".navbar").headroom();</script>
+  </body>
+</html>
